@@ -9,9 +9,18 @@ public class ALICANTE2DFITNESSTRACKER {
     
     public static void main(String[] args) {
         
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);    
         boolean exit = true;
-        
+        do{
+            
+        System.out.println("|‾‾‾\\       |‾‾‾‾‾      /‾‾‾‾‾\\      ");
+        System.out.println("|    \\      |          |            "); 
+        System.out.println("|‾‾‾//      |‾‾‾‾‾      |  ‾‾‾‾        ");
+        System.out.println("|    \\      |          |       \\   ");
+        System.out.println("|___//      |           \\______/    ");
+        System.out.println("\n----------------------------------");
+        System.out.println("WELCOME KAMO SA BEN FITNESS GYM!!");
+        System.out.println("");
         System.out.println("1. CUSTOMER");
         System.out.println("2. COACH");
         System.out.println("3. WORKOUT");
@@ -38,7 +47,8 @@ public class ALICANTE2DFITNESSTRACKER {
             break;
             
             case 4:
-                
+                Membership mb = new Membership ();
+                mb.mTransaction();
             break;
             case 5:
                 System.out.println("Exiting... Sure naka? (yes/no): ");
@@ -46,13 +56,14 @@ public class ALICANTE2DFITNESSTRACKER {
                     if(resp.equalsIgnoreCase("yes")){
                            exit = false;
                 }
-            break;        
-        }
-        while (exit);
-        System.out.println("See you soon!");
-        sc.close();
-        
-        }
+            break;   
+            
+        } 
+        }while (exit);
+        System.out.println("Hanggang sa muli, Paalam Amego!!");
     }
-    
+}   
+       
 
+
+        

@@ -10,12 +10,14 @@ public class Customer {
         Scanner sc = new Scanner (System.in);
         String response;
         do{
-        
-        System.out.println("1. ADD");
-        System.out.println("2. VIEW");
-        System.out.println("3. UPDATE");
-        System.out.println("4. DELETE");
-        System.out.println("5. EXIT");
+            
+        System.out.println("\n----------------------------");
+        System.out.println("SULOD KAMO MGA CUSTOMER!");    
+        System.out.println("1. ADD CUSTOMER");
+        System.out.println("2. VIEW CUSTOMER");
+        System.out.println("3. UPDATE CUSTOMER");
+        System.out.println("4. DELETE CUSTOMER");
+        System.out.println("5. EXIT CUSTOMER ");
         
         System.out.println("Enter Action: ");
         int action = sc.nextInt();
@@ -77,39 +79,46 @@ public class Customer {
     }
     private void updateCustomers() {
         Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Enter the ID to update: ");
+        config conf = new config();
+        System.out.print("Enter the ID to update: ");
         int id = sc.nextInt();
+        
+        while(conf.getSingleValue("SELECT c_id FROM tbl_customers WHERE c_id = ?", id) == 0){
+        System.out.println("Selected ID doesn't exist!");
+        System.out.print("Select Customer ID Again: ");
+        id = sc.nextInt();
+        }
         
         System.out.println("New First Name: ");
         String nfname = sc.next();
-        
         System.out.println("New Last Name: ");
         String nlname = sc.next();
-        
         System.out.println("New Status: ");
         String nstat = sc.next();
-        
         System.out.println("New Email: ");
         String nem = sc.next();
         
-        String qry = "UPDATE tbl_customers SET c_fname = ?, c_lname = ?, c_status = ?, c_email = ? WHERE w_id = ?";
+        String qry = "UPDATE tbl_customers SET c_fname = ?, c_lname = ?, c_status = ?, c_email = ? WHERE c_id = ?";
         
-        config conf = new config();
-        conf.updateRecord(qry, nfname, nlname, nstat, nem, id);         
         
+        conf.updateRecord(qry, nfname, nlname, nstat, nem, id);            
+    
         
     }
-    
     private void deleteCustomers() {
         Scanner sc = new Scanner (System.in);
-        
-        System.out.println("Enter the ID  to delete: ");
+        config conf = new config();
+        System.out.print("Enter the ID  to delete: ");
         int id = sc.nextInt();
         
+        while(conf.getSingleValue("SELECT c_id FROM tbl_customers WHERE c_id = ?", id) == 0){
+        System.out.println("Selected ID doesn't exist!");
+        System.out.print("Select Customer ID Again: ");
+        id = sc.nextInt();
+        }
         String qry = "DELETE FROM tbl_customers WHERE c_id = ?";
         
-        config conf = new config();
+       
         conf.deleteRecord(qry, id);
     }
 }

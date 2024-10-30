@@ -1,6 +1,7 @@
 package alicante.pkg2d.fitnesstracker;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Coach {
     public void coachTransaction(){
@@ -8,14 +9,16 @@ public class Coach {
         Scanner sc = new Scanner (System.in);
         String response;
         do{
-        
-        System.out.println("1. ADD");
-        System.out.println("2. VIEW");
-        System.out.println("3. UPDATE");
-        System.out.println("4. DELETE");
+            
+        System.out.println("\n----------------------------");
+        System.out.println("KINSA NGA COACH?");
+        System.out.println("1. ADD COACH");
+        System.out.println("2. VIEW COACH");
+        System.out.println("3. UPDATE COACH");
+        System.out.println("4. DELETE COACH");
         System.out.println("5. EXIT");
         
-        System.out.println("Enter Action: ");
+        System.out.print("Enter Action: ");
         int action = sc.nextInt();
         Coach ch = new Coach ();
         
@@ -75,10 +78,15 @@ public class Coach {
     }
     private void updateCoach() {
         Scanner sc = new Scanner(System.in);
-        
+        config conf = new config();
         System.out.println("Enter the ID to update: ");
         int id = sc.nextInt();
         
+        while(conf.getSingleValue("SELECT coach_id FROM tbl_coach WHERE coach_id = ?", id) == 0){
+        System.out.println("Selected ID doesn't exist!");
+        System.out.println("Select Coach ID Again: ");
+        id = sc.nextInt();
+        }
         System.out.println("New First Name: ");
         String nfname = sc.next();
         
@@ -93,23 +101,30 @@ public class Coach {
         
         String qry = "UPDATE tbl_coach SET coach_fname = ?, coach_lname = ?, coach_age = ?, coach_address = ? WHERE coach_id = ?";
         
-        config conf = new config();
+        
         conf.updateRecord(qry, nfname, nlname, nage, nadd, id);         
         
         
+        
     }
-    
     private void deleteCoach() {
         Scanner sc = new Scanner (System.in);
-        
+        config conf = new config();
         System.out.println("Enter the ID  to delete: ");
         int id = sc.nextInt();
         
+        while(conf.getSingleValue("SELECT coach_id FROM tbl_coach WHERE coach_id = ?", id) == 0){
+        System.out.println("Selected ID doesn't exist!");
+        System.out.println("Select Coach ID Again: ");
+        id = sc.nextInt();
+        }
+        
         String qry = "DELETE FROM tbl_coach WHERE coach_id = ?";
         
-        config conf = new config();
+      
         conf.deleteRecord(qry, id);
     }
-}
+} 
+
     
 

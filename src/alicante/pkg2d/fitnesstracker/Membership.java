@@ -4,16 +4,18 @@ import java.util.Scanner;
 
 
 public class Membership {
-    public void wTransaction(){
+    public void mTransaction(){
         
         Scanner sc = new Scanner (System.in);
         String response;
         do{
-        
-        System.out.println("1. ADD");
-        System.out.println("2. VIEW");
-        System.out.println("3. UPDATE");
-        System.out.println("4. DELETE");
+            
+        System.out.println("\n----------------------------");
+        System.out.println("PAMEMBRO NA!");
+        System.out.println("1. ADD MEMBERSHIP");
+        System.out.println("2. VIEW MEMBERSHIP");
+        System.out.println("3. UPDATE MEMBERSIP");
+        System.out.println("4. DELETE MEMBERSHIP");
         System.out.println("5. EXIT");
         
         System.out.println("Enter Action: ");
@@ -54,57 +56,74 @@ public class Membership {
         String ms = sc.next();
         System.out.print("Membership Expiration Date: ");
         String med = sc.next();
+        System.out.println("Customer ID:");
+        String cid = sc.next();
+        System.out.println("Coach ID:");
+        String coachid = sc.next();
+        System.out.println("Workout ID:");
+        String wid = sc.next();
 
-        String sql = "INSERT INTO tbl_membership (w_date, w_type, w_duration, caloriesburned) VALUES (?, ?, ?, ?)";
-        conf.addRecord(sql, date, type, dura, cb);
+        String sql = "INSERT INTO tbl_membership (m_status, m_expirationdate, c_id, coach_id, w_id) VALUES (?, ?, ?, ?, ?)";
+        conf.addRecord(sql, ms, med, cid, coachid, wid);
 
 
     }
 
     private void viewMembership() {
         config conf = new config();
-        String Query = "SELECT * FROM tbl_workouts";
-        String[] Headers = {"Workouts_ID","Date", "Type", "Duration", "CaloriesBurned"};
-        String[] Columns = {"w_id", "w_date", "w_type", "w_duration", "caloriesburned"};
+        String Query = "SELECT * FROM tbl_membership";
+        String[] Headers = {"Membership ID", "Customer_ID","Coach_ID", "Workout_ID", "MembershipStatus", "MembershipExpirationDate"}; 
+        String[] Columns = {"m_id", "c_id", "coach_id", "w_id", "m_status", "m_expirationdate" };
         
         
         conf.viewRecords(Query, Headers, Columns);
     }
     private void updateMembership() {
         Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Enter the ID to update: ");
-        int id = sc.nextInt();
-        
-        System.out.println("New Date: ");
-        String ndate = sc.next();
-        
-        System.out.println("New Type: ");
-        String ntype = sc.next();
-        
-        System.out.println("New Duration: ");
-        String ndura = sc.next();
-        
-        System.out.println("New CaloriesBurned: ");
-        String ncb = sc.next();
-        
-        String qry = "UPDATE tbl_workouts SET w_date = ?, w_type = ?, w_duration = ?, caloriesburned = ? WHERE w_id = ?";
-        
         config conf = new config();
-        conf.updateRecord(qry, ndate, ntype, ndura, ncb, id);         
+        System.out.println("Enter the ID to update: ");
+        int id = sc.nextInt();  
+        
+        while(conf.getSingleValue("SELECT m_id FROM tbl_membership WHERE m_id = ?", id) == 0){
+        System.out.println("Selected ID doesn't exist!");
+        System.out.println("Select Membership ID Again: ");
+        id = sc.nextInt();
+        }
+        
+        System.out.println("New Membership Status: ");
+        String nms = sc.next();
+        System.out.println("New Membership Expiration Date: ");
+        String nmed = sc.next();
+        System.out.println("New Customer ID: ");
+        String ncid = sc.next();
+        System.out.println("New Coach ID: ");
+        String ncoachid = sc.next();
+        System.out.println("New Workout ID: ");
+        String nwid = sc.next();
+        
+        String qry = "UPDATE tbl_membership SET m_status = ?, m_expirationdate = ?, c_id = ?, coach_id = ?, w_id = ? WHERE m_id = ?";
+        
+        
+        conf.updateRecord(qry, nms, nmed, ncid, ncoachid, nwid, id);         
         
         
     }
     
     private void deleteMembership() {
         Scanner sc = new Scanner (System.in);
-        
+        config conf = new config();
         System.out.println("Enter the ID  to delete: ");
         int id = sc.nextInt();
         
-        String qry = "DELETE FROM tbl_workouts WHERE w_id = ?";
+        while(conf.getSingleValue("SELECT m_id FROM tbl_membership WHERE m_id = ?", id) == 0){
+        System.out.println("Selected ID doesn't exist!");
+        System.out.println("Select Membership ID Again: ");
+        id = sc.nextInt();
+        }
         
-        config conf = new config();
+        String qry = "DELETE FROM tbl_membership WHERE m_id = ?";
+        
+       
         conf.deleteRecord(qry, id);
     }
 }

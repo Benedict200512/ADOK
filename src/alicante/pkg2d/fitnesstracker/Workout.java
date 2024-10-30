@@ -10,10 +10,12 @@ public class Workout {
         String response;
         do{
         
-        System.out.println("1. ADD");
-        System.out.println("2. VIEW");
-        System.out.println("3. UPDATE");
-        System.out.println("4. DELETE");
+        System.out.println("\n----------------------------");
+        System.out.println("PASINGOT TA!");    
+        System.out.println("1. ADD WORKOUT");
+        System.out.println("2. VIEW WORKOUT");
+        System.out.println("3. UPDATE WORKOUT");
+        System.out.println("4. DELETE WORKOUT");
         System.out.println("5. EXIT");
         
         System.out.println("Enter Action: ");
@@ -76,10 +78,16 @@ public class Workout {
     }
     private void updateWorkouts() {
         Scanner sc = new Scanner(System.in);
-        
+        config conf = new config();
         System.out.println("Enter the ID to update: ");
         int id = sc.nextInt();
         
+        while(conf.getSingleValue("SELECT w_id FROM tbl_workouts WHERE w_id = ?", id) == 0){
+        System.out.println("Selected ID doesn't exist!");
+        System.out.println("Select Workout ID Again: ");
+        id = sc.nextInt();
+        }
+
         System.out.println("New Date: ");
         String ndate = sc.next();
         
@@ -94,7 +102,7 @@ public class Workout {
         
         String qry = "UPDATE tbl_workouts SET w_date = ?, w_type = ?, w_duration = ?, caloriesburned = ? WHERE w_id = ?";
         
-        config conf = new config();
+        
         conf.updateRecord(qry, ndate, ntype, ndura, ncb, id);         
         
         
@@ -102,13 +110,19 @@ public class Workout {
     
     private void deleteWorkouts() {
         Scanner sc = new Scanner (System.in);
-        
+        config conf = new config();
         System.out.println("Enter the ID  to delete: ");
         int id = sc.nextInt();
         
+        while(conf.getSingleValue("SELECT w_id FROM tbl_workouts WHERE w_id = ?", id) == 0){
+        System.out.println("Selected ID doesn't exist!");
+        System.out.println("Select Workout ID Again: ");
+        id = sc.nextInt();
+        }
+        
         String qry = "DELETE FROM tbl_workouts WHERE w_id = ?";
         
-        config conf = new config();
+        
         conf.deleteRecord(qry, id);
     }
 }
