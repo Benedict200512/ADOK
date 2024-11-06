@@ -1,5 +1,6 @@
 package alicante.pkg2d.fitnesstracker;
 
+import static alicante.pkg2d.fitnesstracker.config.connectDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -201,4 +202,3 @@ public void deleteRecord(String sql, Object... values) {
         return result;
     }
     }
-

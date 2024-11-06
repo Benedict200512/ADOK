@@ -1,4 +1,3 @@
-
 package alicante.pkg2d.fitnesstracker;
 
 

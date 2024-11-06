@@ -22,7 +22,6 @@ public class Customer {
         System.out.println("Enter Action: ");
         int action = sc.nextInt();
         Customer cs = new Customer ();
-        
 
         switch(action){
             case 1:
@@ -50,11 +49,11 @@ public class Customer {
     }
     
     
-    public void addCustomers(){
+        public void addCustomers(){
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         System.out.print("First Name: ");
-        String fname = sc.next();
+        String fname = sc.nextLine();
         System.out.print("Last Name: ");
         String lname = sc.next();
         System.out.print("Status: ");
@@ -68,7 +67,7 @@ public class Customer {
 
     }
 
-    private void viewCustomers() {
+    public void viewCustomers() {
         config conf = new config();
         String Query = "SELECT * FROM tbl_customers";
         String[] Headers = {"Customers_ID","FirstName", "LastName", "Status", "Email"};

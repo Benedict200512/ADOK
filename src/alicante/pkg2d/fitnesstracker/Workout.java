@@ -67,7 +67,7 @@ public class Workout {
 
     }
 
-    private void viewWorkouts() {
+    public void viewWorkouts() {
         config conf = new config();
         String Query = "SELECT * FROM tbl_workouts";
         String[] Headers = {"Workouts_ID","Date", "Type", "Duration", "CaloriesBurned"};

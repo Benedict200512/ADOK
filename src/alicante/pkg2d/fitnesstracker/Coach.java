@@ -53,7 +53,7 @@ public class Coach {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         System.out.print("First Name: ");
-        String fname = sc.next();
+        String fname = sc.nextLine();
         System.out.print("Last Name: ");
         String lname = sc.next();
         System.out.print("Age: ");
@@ -67,7 +67,7 @@ public class Coach {
 
     }
 
-    private void viewCoach() {
+    public void viewCoach() {
         config conf = new config();
         String Query = "SELECT * FROM tbl_coach";
         String[] Headers = {"Coach_ID","FirstName", "LastName", "Age", "Address"};
