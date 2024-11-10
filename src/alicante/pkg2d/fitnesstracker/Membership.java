@@ -11,14 +11,27 @@ public class Membership {
         Scanner sc = new Scanner (System.in);
         String response;
         do{
-            
-        System.out.println("\n----------------------------");
-        System.out.println("PAMEMBRO NA!");
-        System.out.println("1. ADD MEMBERSHIP");
-        System.out.println("2. VIEW MEMBERSHIP");
-        System.out.println("3. UPDATE MEMBERSIP");
-        System.out.println("4. DELETE MEMBERSHIP");
-        System.out.println("5. EXIT");
+           
+        System.out.println("");    
+        System.out.println("||===========================||");
+        System.out.println("||       PA MEMBRO NA!       ||");  
+        System.out.println("||===========================||");
+        System.out.println("");
+        System.out.println("----------------------");
+        System.out.println("|1. ADD MEMBERSHIP   |");
+        System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println("|2. VIEW MEMBERSHIP  |");
+        System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println("|3. UPDATE MEMBERSHIP|");
+        System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println("|4. DELETE MEMBERSHIP|");
+        System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println("|5. EXIT MEMBERSHIP  | ");
+        System.out.println("----------------------");
         
         System.out.println("Enter Action: ");
         int action = sc.nextInt();

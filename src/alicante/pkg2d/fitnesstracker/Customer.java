@@ -11,13 +11,26 @@ public class Customer {
         String response;
         do{
             
-        System.out.println("\n----------------------------");
-        System.out.println("SULOD KAMO MGA CUSTOMER!");    
-        System.out.println("1. ADD CUSTOMER");
-        System.out.println("2. VIEW CUSTOMER");
-        System.out.println("3. UPDATE CUSTOMER");
-        System.out.println("4. DELETE CUSTOMER");
-        System.out.println("5. EXIT CUSTOMER ");
+        System.out.println("");    
+        System.out.println("||===========================||");
+        System.out.println("||  SULOD KAMO MGA CUSTOMER  ||");  
+        System.out.println("||===========================||");
+        System.out.println("");
+        System.out.println("--------------------");
+        System.out.println("|1. ADD CUSTOMER   |");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("|2. VIEW CUSTOMER  |");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("|3. UPDATE CUSTOMER|");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("|4. DELETE CUSTOMER|");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("|5. EXIT CUSTOMER  | ");
+        System.out.println("--------------------");
         
         System.out.println("Enter Action: ");
         int action = sc.nextInt();
@@ -70,9 +83,10 @@ public class Customer {
     public void viewCustomers() {
         config conf = new config();
         String Query = "SELECT * FROM tbl_customers";
+        
         String[] Headers = {"Customers_ID","FirstName", "LastName", "Status", "Email"};
         String[] Columns = {"c_id", "c_fname", "c_lname", "c_status", "c_email"};
-        
+
         
         conf.viewRecords(Query, Headers, Columns);
     }
@@ -89,7 +103,7 @@ public class Customer {
         }
         
         System.out.println("New First Name: ");
-        String nfname = sc.next();
+        String nfname = sc.nextLine();
         System.out.println("New Last Name: ");
         String nlname = sc.next();
         System.out.println("New Status: ");

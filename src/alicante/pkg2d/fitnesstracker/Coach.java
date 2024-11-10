@@ -9,14 +9,27 @@ public class Coach {
         Scanner sc = new Scanner (System.in);
         String response;
         do{
-            
-        System.out.println("\n----------------------------");
-        System.out.println("KINSA NGA COACH?");
-        System.out.println("1. ADD COACH");
-        System.out.println("2. VIEW COACH");
-        System.out.println("3. UPDATE COACH");
-        System.out.println("4. DELETE COACH");
-        System.out.println("5. EXIT");
+        
+        System.out.println("");
+        System.out.println("||===========================||");
+        System.out.println("||      KINSA NGA COACH      ||");  
+        System.out.println("||===========================||");
+        System.out.println("");
+        System.out.println("-----------------");
+        System.out.println("|1. ADD COACH   |");
+        System.out.println("-----------------");
+        System.out.println("-----------------");
+        System.out.println("|2. VIEW COACH  |");
+        System.out.println("-----------------");
+        System.out.println("-----------------");
+        System.out.println("|3. UPDATE COACH|");
+        System.out.println("-----------------");
+        System.out.println("-----------------");
+        System.out.println("|4. DELETE COACH|");
+        System.out.println("-----------------");
+        System.out.println("-----------------");
+        System.out.println("|5. EXIT COACH  |");
+        System.out.println("-----------------");
         
         System.out.print("Enter Action: ");
         int action = sc.nextInt();

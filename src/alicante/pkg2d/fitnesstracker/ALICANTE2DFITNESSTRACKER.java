@@ -11,20 +11,32 @@ public class ALICANTE2DFITNESSTRACKER {
         Scanner sc = new Scanner(System.in);    
         boolean exit = true;
         do{
-            
-        System.out.println("|‾‾‾\\       |‾‾‾‾‾      /‾‾‾‾‾\\      ");
-        System.out.println("|    \\      |          |            "); 
-        System.out.println("|‾‾‾//      |‾‾‾‾‾      |  ‾‾‾‾        ");
-        System.out.println("|    \\      |          |       \\   ");
-        System.out.println("|___//      |           \\______/    ");
-        System.out.println("\n----------------------------------");
-        System.out.println("WELCOME KAMO SA BEN FITNESS GYM!!");
+        
+        System.out.println("============================================================");
+        System.out.println("||            |‾‾‾\\       |‾‾‾‾‾      /‾‾‾‾‾\\               || ");
+        System.out.println("||            |    \\      |          |                    ||  "); 
+        System.out.println("||            |‾‾‾//      |‾‾‾‾‾      |  ‾‾‾‾               || ");
+        System.out.println("||            |    \\      |          |       \\            || ");
+        System.out.println("||            |___//      |           \\______/            || ");
+        System.out.println("============================================================");
+        System.out.println("||             WELCOME KAMO SA BEN FITNESS GYM            ||");
+        System.out.println("============================================================");
         System.out.println("");
-        System.out.println("1. CUSTOMER");
-        System.out.println("2. COACH");
-        System.out.println("3. WORKOUT");
-        System.out.println("4. MEMBERSHIP");
-        System.out.println("5. EXIT");
+        System.out.println("---------------");
+        System.out.println("|1. CUSTOMER  |");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("|2. COACH     |");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("|3. WORKOUT   |");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("|4. MEMBERSHIP|");
+        System.out.println("---------------");
+        System.out.println("---------------");
+        System.out.println("|5. EXIT      |");
+        System.out.println("---------------");
         
         System.out.print("Enter Action: ");
         int act = sc.nextInt();

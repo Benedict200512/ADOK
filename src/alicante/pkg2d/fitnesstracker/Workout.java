@@ -10,13 +10,26 @@ public class Workout {
         String response;
         do{
         
-        System.out.println("\n----------------------------");
-        System.out.println("PASINGOT TA!");    
-        System.out.println("1. ADD WORKOUT");
-        System.out.println("2. VIEW WORKOUT");
-        System.out.println("3. UPDATE WORKOUT");
-        System.out.println("4. DELETE WORKOUT");
-        System.out.println("5. EXIT");
+        System.out.println("");
+        System.out.println("||===========================||");
+        System.out.println("||        PASINGOT TA!       ||");  
+        System.out.println("||===========================||");
+        System.out.println("");
+        System.out.println("--------------------");
+        System.out.println("|1.  ADD WORKOUT   |");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("|2.  VIEW WORKOUT  |");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("|3.  UPDATE WORKOUT|");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("|4.  DELETE WORKOUT|");
+        System.out.println("--------------------");
+        System.out.println("--------------------");
+        System.out.println("|5.  EXIT WORKOUT  | ");
+        System.out.println("--------------------");
         
         System.out.println("Enter Action: ");
         int action = sc.nextInt();

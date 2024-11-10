@@ -71,24 +71,24 @@ public class config {
 
             // Print the headers dynamically
             StringBuilder headerLine = new StringBuilder();
-            headerLine.append("--------------------------------------------------------------------------------\n| ");
+            headerLine.append("=================================================================================================\n|| ");
             for (String header : columnHeaders) {
-                headerLine.append(String.format("%-20s | ", header)); // Adjust formatting as needed
+                headerLine.append(String.format("%-15s || ", header)); // Adjust formatting as needed
             }
-            headerLine.append("\n--------------------------------------------------------------------------------");
+            headerLine.append("\n=================================================================================================");
 
             System.out.println(headerLine.toString());
 
             // Print the rows dynamically based on the provided column names
             while (rs.next()) {
-                StringBuilder row = new StringBuilder("| ");
+                StringBuilder row = new StringBuilder("|| ");
                 for (String colName : columnNames) {
                     String value = rs.getString(colName);
-                    row.append(String.format("%-20s | ", value != null ? value : "")); // Adjust formatting
+                    row.append(String.format("%-15s || ", value != null ? value : "")); // Adjust formatting
                 }
                 System.out.println(row.toString());
             }
-            System.out.println("--------------------------------------------------------------------------------");
+            System.out.println("=================================================================================================");
 
         } catch (SQLException e) {
             System.out.println("Error retrieving records: " + e.getMessage());
