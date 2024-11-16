@@ -33,7 +33,12 @@ public class Membership {
         System.out.println("|5. EXIT MEMBERSHIP  | ");
         System.out.println("----------------------");
         
-        System.out.println("Enter Action: ");
+        System.out.print("Enter Action: ");
+        if (!sc.hasNextInt()) {
+                System.out.print("Invalid input! Please enter a number between 1 to 5: ");
+                sc.nextLine();
+               
+            }
         int action = sc.nextInt();
         Membership mb = new Membership ();
         
@@ -57,9 +62,9 @@ public class Membership {
                 mb.viewMembership();
                 break;
         }
-        System.out.println("Do you want to continue? (yes/no)");
+        System.out.println("Do you want to membership? (yes/no)");
         response = sc.next();
-    }while(response.equalsIgnoreCase("yes"));
+    }while(response.equalsIgnoreCase("no"));
     System.out.println("Thank You, See you soonest!");
     
     }
@@ -101,10 +106,9 @@ public class Membership {
             wid = sc.nextInt();
         }
         
-        String status = "Pending";
+        System.out.print("Enter Membership Status: ");
+        String status= sc.next();
 
-        
-        
         System.out.print("Enter Membership Expiration Date: ");
         String med = sc.next();
    
@@ -132,7 +136,12 @@ public class Membership {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         System.out.print("Enter the ID to update: ");
+        while (!sc.hasNextInt()) {
+        System.out.print("Invalid input! Please enter a valid Membership ID: ");
+        sc.next();
+        }
         int id = sc.nextInt();
+        sc.nextLine();
         
         while(conf.getSingleValue("SELECT m_id FROM tbl_membership WHERE m_id = ?", id) == 0){
         System.out.println("Selected ID doesn't exist!");
@@ -153,7 +162,12 @@ public class Membership {
         Scanner sc = new Scanner (System.in);
         config conf = new config();
         System.out.print("Enter the ID  to delete: ");
+        while (!sc.hasNextInt()) {
+        System.out.print("Invalid input! Please enter a valid Membership ID: ");
+        sc.next();
+        }
         int id = sc.nextInt();
+        sc.nextLine();
         
         while(conf.getSingleValue("SELECT m_id FROM tbl_membership WHERE m_id = ?", id) == 0){
         System.out.println("Selected ID doesn't exist!");

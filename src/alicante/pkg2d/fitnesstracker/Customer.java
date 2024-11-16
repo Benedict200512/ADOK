@@ -8,7 +8,7 @@ public class Customer {
     public void cTransaction(){
         
         Scanner sc = new Scanner (System.in);
-        String response;
+        String response = null;
         do{
             
         System.out.println("");    
@@ -32,7 +32,12 @@ public class Customer {
         System.out.println("|5. EXIT CUSTOMER  | ");
         System.out.println("--------------------");
         
-        System.out.println("Enter Action: ");
+        System.out.print("Enter Action: ");
+        if (!sc.hasNextInt()) {
+                System.out.print("Invalid input! Please enter a number between 1 to 5: ");
+                sc.nextLine();
+               
+            }
         int action = sc.nextInt();
         Customer cs = new Customer ();
 
@@ -54,9 +59,9 @@ public class Customer {
                 cs.viewCustomers();    
                 break;
         }
-        System.out.println("Do you want to continue? (yes/no)");
+        System.out.println("Do you want to exit customer? (yes/no)");
         response = sc.next();
-    }while(response.equalsIgnoreCase("yes"));
+    }while(response.equalsIgnoreCase("no"));
     System.out.println("Thank You, See you soonest!");
     
     }
@@ -94,7 +99,14 @@ public class Customer {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         System.out.print("Enter the ID to update: ");
+        while (!sc.hasNextInt()) {
+        System.out.print("Invalid input! Please enter a valid Customer ID: ");
+        sc.next();
+        }
         int id = sc.nextInt();
+        sc.nextLine();
+       
+        
         
         while(conf.getSingleValue("SELECT c_id FROM tbl_customers WHERE c_id = ?", id) == 0){
         System.out.println("Selected ID doesn't exist!");
@@ -102,13 +114,13 @@ public class Customer {
         id = sc.nextInt();
         }
         
-        System.out.println("New First Name: ");
+        System.out.print("New First Name: ");
         String nfname = sc.nextLine();
-        System.out.println("New Last Name: ");
+        System.out.print("New Last Name: ");
         String nlname = sc.next();
-        System.out.println("New Status: ");
+        System.out.print("New Status: ");
         String nstat = sc.next();
-        System.out.println("New Email: ");
+        System.out.print("New Email: ");
         String nem = sc.next();
         
         String qry = "UPDATE tbl_customers SET c_fname = ?, c_lname = ?, c_status = ?, c_email = ? WHERE c_id = ?";
@@ -122,7 +134,12 @@ public class Customer {
         Scanner sc = new Scanner (System.in);
         config conf = new config();
         System.out.print("Enter the ID  to delete: ");
+        while (!sc.hasNextInt()) {
+        System.out.print("Invalid input! Please enter a valid Customer ID: ");
+        sc.next();
+        }
         int id = sc.nextInt();
+        sc.nextLine();
         
         while(conf.getSingleValue("SELECT c_id FROM tbl_customers WHERE c_id = ?", id) == 0){
         System.out.println("Selected ID doesn't exist!");
@@ -136,3 +153,4 @@ public class Customer {
     }
 }
 
+    
