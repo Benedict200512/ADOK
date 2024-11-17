@@ -1,7 +1,5 @@
 package alicante.pkg2d.fitnesstracker;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
@@ -62,7 +60,7 @@ public class Membership {
                 mb.viewMembership();
                 break;
         }
-        System.out.println("Do you want to membership? (yes/no)");
+        System.out.println("Do you want to exit membership? (yes/no)");
         response = sc.next();
     }while(response.equalsIgnoreCase("no"));
     System.out.println("Thank You, See you soonest!");
@@ -76,7 +74,12 @@ public class Membership {
         cs.viewCustomers();         
         
         System.out.print("Enter the ID of the Customer: ");
+        while (!sc.hasNextInt()) {
+        System.out.print("Invalid input! Please enter a valid Customer ID: ");
+        sc.next();
+        }
         int cid = sc.nextInt();
+        sc.nextLine();
         
         String csql = "SELECT c_id FROM tbl_customers WHERE c_id = ?";
         while(conf.getSingleValue(csql, cid) == 0){
@@ -89,7 +92,13 @@ public class Membership {
         ch.viewCoach();  
         
         System.out.print("Enter the ID of the Coach: ");
+        while (!sc.hasNextInt()) {
+        System.out.print("Invalid input! Please enter a valid Coach ID: ");
+        sc.next();
+        }
         int coachid = sc.nextInt();
+        sc.nextLine();
+        
         String coachsql = "SELECT coach_id FROM tbl_coach WHERE coach_id = ?";
         while(conf.getSingleValue(coachsql, coachid) == 0){
             System.out.print("Coach does not exist, Select Again: ");
@@ -99,7 +108,12 @@ public class Membership {
         wt.viewWorkouts();
         
         System.out.print("Enter the ID of the Workout: ");
+        while (!sc.hasNextInt()) {
+        System.out.print("Invalid input! Please enter a valid Workout ID: ");
+        sc.next();
+        }
         int wid = sc.nextInt();
+        sc.nextLine();
         String wsql = "SELECT w_id FROM tbl_workouts WHERE w_id = ?";
         while(conf.getSingleValue(wsql, coachid) == 0){
             System.out.print("Workout does not exist, Select Again: ");

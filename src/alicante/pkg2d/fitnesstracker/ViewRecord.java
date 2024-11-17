@@ -56,11 +56,11 @@ public class ViewRecord {
                         System.out.println("====================================================================================================");
                         System.out.println("||                                    VIEW CUSTOMER'S COACHES                                     ||");
                         System.out.println("====================================================================================================");
-                        String coachQuery = "SELECT tbl_customers.c_fname, coach_id, tbl_coach.coach_fname, tbl_coach.coach_lname " 
+                        String coachQuery = "SELECT tbl_customers.c_id, tbl_customers.c_fname, coach_id, tbl_coach.coach_fname, tbl_coach.coach_lname " 
                                 + "FROM tbl_coach "
                                 + "LEFT JOIN tbl_customers ON tbl_customers.c_id = tbl_coach.coach_id";
-                        String[] coachHeaders = {"Customer", "Coach ID", "Coach First Name", "Coach Last Name"};
-                        String[] coachColumns = {"c_fname", "coach_id", "coach_fname", "coach_lname"};
+                        String[] coachHeaders = {"Customer ID","Customer", "Coach ID", "Coach First Name", "Coach Last Name"};
+                        String[] coachColumns = {"c_id","c_fname", "coach_id", "coach_fname", "coach_lname"};
                         conf.viewRecords(coachQuery, coachHeaders, coachColumns);
                         break;
                    case 3:                  

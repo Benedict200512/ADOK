@@ -1,7 +1,6 @@
 package alicante.pkg2d.fitnesstracker;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 public class Coach {
     public void coachTransaction(){

@@ -1,6 +1,5 @@
 package alicante.pkg2d.fitnesstracker;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ALICANTE2DFITNESSTRACKER {
