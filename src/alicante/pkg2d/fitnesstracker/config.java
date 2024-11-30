@@ -93,7 +93,7 @@ public class config {
         } catch (SQLException e) {
             System.out.println("Error retrieving records: " + e.getMessage());
         }
-    } 
+    }
    
 //-----------------------------------------------
     // UPDATE METHOD
